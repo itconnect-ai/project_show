@@ -1,0 +1,8 @@
+# Scratch & temporary files
+node_modules/
+.DS_Store
+*.log
+scratch/
+detail_*.html
+ref_*
+*.tmp
