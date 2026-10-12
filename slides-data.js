@@ -1,34 +1,15 @@
 /**
  * ITCONNECT — AI Service Showcase · 슬라이드 데이터
+ * 
+ * 1 서비스 = 2장 구성:
+ *   [1장 Concept] : 스크린샷 없는 100% 통일된 에디토리얼 디자인 (개념·가치·프로세스)
+ *   [2장 Reality] : 대형 브라우저 프레임의 실제 서비스 운영 화면 (실체·증거·스펙)
  *
- * ▸ 순서 변경: 배열 안 객체의 위치만 옮기면 됩니다. (번호는 자동 계산)
- * ▸ 모든 문구는 각 서비스의 실제 사이트 문구를 기반으로 작성했습니다.
- *   수치를 추가할 때는 실제 근거가 있는 값만 넣어 주세요.
- *
- * theme : bg(배경) / fg(글자) / ac(포인트) / sub(보조 면)
- * visual.type :
- *   shot     실제 사이트 화면 (assets/shots/*.png)
- *   chat     대화형 일러스트
- *   doc      문서 프로세스 일러스트
- *   channels 채널 타이포그래피
- *   stages   파이프라인 단계 일러스트
- *   chart    데이터 차트 일러스트
- *   answer   AI 답변 일러스트
- *   flow     3단계 흐름 타이포그래피
+ * 배경 큰 글자는 별도 딜레이 없이 슬라이드 전환과 100% 동기화되어 깔끔하게 이동합니다.
  */
 
-window.SLIDES = [
-  /* ───────────────────────── COVER ───────────────────────── */
-  {
-    kind: 'cover',
-    theme: { bg: '#ECE8DF', fg: '#121212', ac: '#FF4A1C', sub: '#DED8CB' },
-    eyebrow: 'ITCONNECT — AI Service Showcase',
-    lines: ['우리는 AI를', '가르치기 전에,', '<mark>직접 만들어 씁니다.</mark>'],
-    desc: 'AI로 직접 기획하고 개발해 매일 업무에 쓰고 있는 서비스 14개를 소개합니다.',
-    bigword: 'Built with AI'
-  },
-
-  /* ───────────────────────── SERVICES ───────────────────────── */
+window.SERVICES_RAW = [
+  // 01. Startora
   {
     id: 'startora',
     name: 'Startora',
@@ -36,7 +17,7 @@ window.SLIDES = [
     domain: 'startora.net',
     theme: { bg: '#0F241E', fg: '#ECE6D8', ac: '#C9F25B', sub: '#183A30' },
     lines: ['챗 하나로', '회사 업무가', '<mark>돌아갑니다.</mark>'],
-    desc: '지식베이스 검색, 문서·양식 생성, 일정·재무 업무를 대화 하나로 처리하는 AI 업무 어시스턴트입니다.',
+    desc: '지식베이스 검색, 문서·양식 생성, 일정·재무 업무를 대화 하나로 처리하는 사내 AI 어시스턴트입니다.',
     points: [
       { k: '01', t: '사내 지식베이스 검색' },
       { k: '02', t: '문서·양식 생성과 결재' },
@@ -50,8 +31,16 @@ window.SLIDES = [
         { who: 'me', text: '다음 주 수요일 연차 신청서도 올려 줘' },
         { who: 'ai', text: '연차 신청서를 작성해 결재 라인에 올렸습니다.' }
       ]
+    },
+    shot: {
+      src: 'assets/shots/startora.png',
+      headline: '사내 전 직원이 매일 접속하는 실전 ERP',
+      subtext: '회의록 STT 요약, 사규 검색, 연차 신청 및 재무 결재가 하나의 시스템에서 작동합니다.',
+      badges: ['자체 Bearer 토큰 인증', 'Polyglot Monorepo', 'Hermes Agent 연동']
     }
   },
+
+  // 02. Axio
   {
     id: 'axio',
     name: 'Axio',
@@ -65,8 +54,19 @@ window.SLIDES = [
       { k: '02', t: 'PRD·FRD·TRD 산출물 자동 생성' },
       { k: '03', t: '의사결정 과정 기록 · 시각화' }
     ],
-    visual: { type: 'shot', src: 'assets/shots/consulting.png', pos: 'left top' }
+    visual: {
+      type: 'flow',
+      steps: ['병목 업무 발굴', '산출물 자동 생성', '의사결정 시각화']
+    },
+    shot: {
+      src: 'assets/shots/consulting.png',
+      headline: '실제 기업 고객 진단에 투입되는 컨설팅 시스템',
+      subtext: '기업의 현업 프로세스를 인터뷰하고, AI가 우선순위와 도입 타당성 문서를 실시간 도출합니다.',
+      badges: ['AX 성숙도 진단 모델', '경영진 보고서 빌더', 'PRD·FRD 자동 출력']
+    }
   },
+
+  // 03. BizPlan
   {
     id: 'bizplan',
     name: 'BizPlan',
@@ -84,8 +84,16 @@ window.SLIDES = [
       type: 'doc',
       title: '2026 창업지원사업 사업계획서',
       steps: ['공고문 분석', '회사 팩트 정리', '섹션별 초안 작성', 'AI 검토 · 보완', '제출 관리']
+    },
+    shot: {
+      src: 'assets/shots/bizplan.png',
+      headline: '중기부·창진원 표준 PSST 사업계획서 빌더',
+      subtext: '정부과제 공고문 분석부터 3개년 추정 손익계산서까지 체계적으로 검토하고 관리합니다.',
+      badges: ['표준 PSST 프레임워크', 'RAG 팩트 주입기', '3개년 재무 추정 수식']
     }
   },
+
+  // 04. HOMEPAGE.WORKS
   {
     id: 'homepage',
     name: 'HOMEPAGE.WORKS',
@@ -99,8 +107,24 @@ window.SLIDES = [
       { v: '4~6주', l: '평균 개발 기간' },
       { v: '40~60%', l: '기존 외주 대비 비용 절감' }
     ],
-    visual: { type: 'shot', src: 'assets/shots/homepage.png', pos: 'center top' }
+    visual: {
+      type: 'channels',
+      items: [
+        { n: 'Select', d: '만들고 싶은 기능 선택' },
+        { n: 'Estimate', d: '단가·일정 실시간 확인' },
+        { n: 'Document', d: '요구사항 정의서 즉시 생성' },
+        { n: 'Build', d: 'AI 바이브코딩 기반 납품' }
+      ]
+    },
+    shot: {
+      src: 'assets/shots/homepage.png',
+      headline: '불투명한 외주 견적을 투명하게 바꾼 3분 견적기',
+      subtext: '기능별 복잡도와 공수를 실시간 산출하여 고객이 납득할 수 있는 정찰제 기준을 제시합니다.',
+      badges: ['3분 기능 선택 UI', '기존 외주 대비 40~60% 절감', '소스코드 100% 인도']
+    }
   },
+
+  // 05. Content Studio
   {
     id: 'content',
     name: 'Content Studio',
@@ -122,8 +146,16 @@ window.SLIDES = [
         { n: 'Instagram', d: '캡션 · 해시태그' },
         { n: 'Facebook', d: '공유형 소식' }
       ]
+    },
+    shot: {
+      src: 'assets/shots/content.png',
+      headline: '사내 마케팅 콘텐츠 멀티채널 생성 파이프라인',
+      subtext: '등록된 Google 계정 워크스페이스를 통해 사내 고유 문체와 키워드를 유지하며 동시 발행합니다.',
+      badges: ['Google OAuth 인증', '채널별 퓨샷 프롬프트', '로컬 워크스페이스 연동']
     }
   },
+
+  // 06. Landing Maker
   {
     id: 'landing',
     name: 'Landing Maker',
@@ -137,8 +169,16 @@ window.SLIDES = [
       { k: '02', t: '12단계 AI 파이프라인' },
       { k: '03', t: '상세페이지 디자인 출력' }
     ],
-    visual: { type: 'stages', count: 12, label: 'AI Pipeline Studio' }
+    visual: { type: 'stages', count: 12, label: 'AI Pipeline Studio' },
+    shot: {
+      src: 'assets/shots/landing.png',
+      headline: '12단계 AI 파이프라인 기반 상세페이지 스튜디오',
+      subtext: '제품과 타깃을 입력하면 설득 구조에 맞춘 카피라이팅과 섹션 디자인을 자동 완성합니다.',
+      badges: ['12-Stage AI Pipeline', '고전환 설득 카피 엔진', '실시간 미리보기']
+    }
   },
+
+  // 07. GrowthLab
   {
     id: 'growthlab',
     name: 'GrowthLab',
@@ -152,8 +192,16 @@ window.SLIDES = [
       { k: '02', t: '키워드 · 트렌드 수집' },
       { k: '03', t: 'AI 성장 인사이트' }
     ],
-    visual: { type: 'chart' }
+    visual: { type: 'chart' },
+    shot: {
+      src: 'assets/shots/keypaper.png',
+      headline: '유튜브 알고리즘 데이터 수집 & AI 성장 분석기',
+      subtext: '경쟁 채널 및 바이럴 영상의 이상치(Outlier) 패턴을 수집해 기획 단계에서 알고리즘을 공략합니다.',
+      badges: ['YouTube Data API v3', '키워드·트렌드 클러스터링', '역할별 맞춤 관리자']
+    }
   },
+
+  // 08. GEO Dashboard
   {
     id: 'geo',
     name: 'GEO Dashboard',
@@ -171,8 +219,16 @@ window.SLIDES = [
       type: 'answer',
       q: 'AX 컨설팅과 사내 AI 교육을 함께 하는 회사를 알려 줘',
       brand: 'ITCONNECT'
+    },
+    shot: {
+      src: 'assets/shots/geo.png',
+      headline: 'ChatGPT·Perplexity 시대의 검색 최적화 진단',
+      subtext: '전통 검색을 넘어 생성형 AI 답변에서 자사 브랜드의 추천 점유율과 인용 출처를 실시간 추적합니다.',
+      badges: ['Multi-LLM 질의 프로빙', '인용 출처(Citation) 역추적', 'GEO 점유율 지수화']
     }
   },
+
+  // 09. 광고 관측실
   {
     id: 'ads',
     name: '광고 관측실',
@@ -186,8 +242,16 @@ window.SLIDES = [
       { k: '02', t: '한 화면에서 비교' },
       { k: '03', t: '마케팅 레퍼런스 축적' }
     ],
-    visual: { type: 'flow', steps: ['여러 플랫폼', '자동 수집', '한곳에서 관측'] }
+    visual: { type: 'flow', steps: ['여러 플랫폼', '자동 수집', '한곳에서 관측'] },
+    shot: {
+      src: 'assets/shots/ads.png',
+      headline: '경쟁사 승리 소재와 광고 트렌드 실시간 트래커',
+      subtext: '메타·구글 광고 라이브러리 데이터를 수집하여 오래 유지되는 고수익 광고 소재를 분석합니다.',
+      badges: ['Cloudflare Zero-Trust 보호', '광고 수명(Runtime) 분석', '멀티 플랫폼 자동 집계']
+    }
   },
+
+  // 10. GovNotice
   {
     id: 'gov',
     name: 'GovNotice',
@@ -201,8 +265,16 @@ window.SLIDES = [
       { k: '02', t: '우리 회사 기준 선별' },
       { k: '03', t: '메신저 알림' }
     ],
-    visual: { type: 'flow', steps: ['전체 공고', '조건 선별', '맞춤 알림'] }
+    visual: { type: 'flow', steps: ['전체 공고', '조건 선별', '맞춤 알림'] },
+    shot: {
+      src: 'assets/shots/gov.png',
+      headline: '전국 공고를 24시간 감시하는 지능형 지원사업 봇',
+      subtext: '중기부·창진원·지자체 공고 중 자사 요건에 부합하는 공고만 3줄 요약하여 사내에 전달합니다.',
+      badges: ['전국 공고 실시간 파싱', '기업 자격 요건 자동 필터', '디스코드 웹훅 연동']
+    }
   },
+
+  // 11. AI Information
   {
     id: 'info',
     name: 'AI Information',
@@ -216,8 +288,16 @@ window.SLIDES = [
       { k: '02', t: '핵심 내용 정리' },
       { k: '03', t: '블로그 글 자동 생성' }
     ],
-    visual: { type: 'flow', steps: ['소식 · 논문', 'AI 정리', '블로그 발행'] }
+    visual: { type: 'flow', steps: ['소식 · 논문', 'AI 정리', '블로그 발행'] },
+    shot: {
+      src: 'assets/shots/info.png',
+      headline: '글로벌 AI 트렌드 수집 및 아티클 자동 생성 허브',
+      subtext: 'arXiv 논문과 최신 모델 발표를 분석하여 실무 적용 관점의 기술 블로그 글로 변환합니다.',
+      badges: ['글로벌 테크 미디어 크롤링', 'SEO 최적화 아티클 빌더', '사내 지식 브리핑']
+    }
   },
+
+  // 12. B-CREATOR
   {
     id: 'bcreator',
     name: 'B-CREATOR',
@@ -231,8 +311,24 @@ window.SLIDES = [
       { k: '02', t: '실습 기록 · 제출 피드백' },
       { k: '03', t: '결과물 포트폴리오화' }
     ],
-    visual: { type: 'shot', src: 'assets/shots/bcreator.png', pos: 'center top' }
+    visual: {
+      type: 'channels',
+      items: [
+        { n: 'Learn', d: '단계별 실습 가이드' },
+        { n: 'Code', d: 'AI와 함께 실시간 빌드' },
+        { n: 'Review', d: '과정 기록 · 피드백' },
+        { n: 'Archive', d: '결과물 포트폴리오 완성' }
+      ]
+    },
+    shot: {
+      src: 'assets/shots/bcreator.png',
+      headline: '비전공자도 하루 만에 앱을 만드는 교육 플랫폼',
+      subtext: '실습 환경 세팅 없이 웹 브라우저에서 레슨을 따라가며 결과물을 자신의 포트폴리오로 축적합니다.',
+      badges: ['웹 브라우저 즉시 실습', 'AI 튜터 실시간 피드백', '포트폴리오 자동 아카이빙']
+    }
   },
+
+  // 13. 내 링크
   {
     id: 'favorite',
     name: '내 링크',
@@ -246,8 +342,24 @@ window.SLIDES = [
       { v: '23', l: '직접 운영 중인 서비스' },
       { v: '⌘K', l: '이름·태그·주소 검색' }
     ],
-    visual: { type: 'shot', src: 'assets/shots/favorite.png', pos: 'left top' }
+    visual: {
+      type: 'channels',
+      items: [
+        { n: '498 Links', d: '파비콘 내장 인덱스' },
+        { n: 'Cmd + K', d: '10ms 즉시 검색' },
+        { n: 'Pinned', d: '자주 쓰는 10개 핀' },
+        { n: '23 In-House', d: '자사 운영 서비스 모음' }
+      ]
+    },
+    shot: {
+      src: 'assets/shots/favorite.png',
+      headline: '사내 498개 도구와 23개 운영 사이트 단축키 관문',
+      subtext: '흩어진 AI 서비스와 업무 도구를 0.01초 만에 찾아내는 전사 생산성 포털 대시보드입니다.',
+      badges: ['Vercel Edge + Supabase', '인메모리 고속 검색', '역할별 분류 대시보드']
+    }
   },
+
+  // 14. ITCONNECT
   {
     id: 'itconnect',
     name: 'ITCONNECT',
@@ -261,16 +373,83 @@ window.SLIDES = [
       { v: '400h+', l: '연간 반복 업무 절감 (구축 사례)' },
       { v: '15기', l: '청년창업사관학교' }
     ],
-    visual: { type: 'shot', src: 'assets/shots/itconnect.png', pos: 'center top' }
-  },
-
-  /* ───────────────────────── CLOSING ───────────────────────── */
-  {
-    kind: 'closing',
-    theme: { bg: '#FF4A1C', fg: '#140A05', ac: '#140A05', sub: '#E83F12' },
-    eyebrow: 'ITCONNECT — itconnect.dev',
-    lines: ['오늘 본 모든 것,', '여러분도', '<mark>만들 수 있습니다.</mark>'],
-    desc: '이제, 여러분의 업무에서 시작해 보겠습니다.',
-    bigword: 'Your turn'
+    visual: {
+      type: 'channels',
+      items: [
+        { n: 'Diagnose', d: '업무 프로세스 분석' },
+        { n: 'Design', d: 'AI 자동화 시스템 설계' },
+        { n: 'Educate', d: '임직원 바이브코딩 교육' },
+        { n: 'Transfer', d: '사내 자생 운영 이관' }
+      ]
+    },
+    shot: {
+      src: 'assets/shots/itconnect.png',
+      headline: '대한민국 기업의 AX 실행을 돕는 본사 플랫폼',
+      subtext: '1회성 컨설팅이 아닌, 임직원이 직접 자기 업무를 개선할 수 있는 구조와 기술을 내재화합니다.',
+      badges: ['청년창업사관학교 15기', '기업부설연구소 인증', '풀무원·프레인글로벌 진행']
+    }
   }
 ];
+
+// ─────────────────────────────────────────────────────────────────
+// 슬라이드 배열 자동 생성:
+// COVER (1) + [CONCEPT + SHOT] × 14 (28) + CLOSING (1) = 총 30장
+// ─────────────────────────────────────────────────────────────────
+const SLIDES = [];
+
+// 1. COVER
+SLIDES.push({
+  kind: 'cover',
+  theme: { bg: '#ECE8DF', fg: '#121212', ac: '#FF4A1C', sub: '#DED8CB' },
+  eyebrow: 'ITCONNECT — AI Service Showcase',
+  lines: ['우리는 AI를', '가르치기 전에,', '<mark>직접 만들어 씁니다.</mark>'],
+  desc: 'AI로 직접 기획하고 개발해 매일 업무에 쓰고 있는 서비스 14개를 소개합니다.',
+  bigword: 'Built with AI'
+});
+
+// 2. 14 Services (2 Slides each: Concept -> Reality Shot)
+window.SERVICES_RAW.forEach((svc, index) => {
+  const svcNum = index + 1;
+
+  // Slide A: Concept & Value (통일된 에디토리얼 비주얼)
+  SLIDES.push({
+    kind: 'concept',
+    serviceIndex: svcNum,
+    id: svc.id,
+    name: svc.name,
+    category: svc.category,
+    domain: svc.domain,
+    theme: svc.theme,
+    lines: svc.lines,
+    desc: svc.desc,
+    points: svc.points,
+    stats: svc.stats,
+    visual: svc.visual,
+    bigword: svc.name
+  });
+
+  // Slide B: Production Reality Shot (대형 실제 화면)
+  SLIDES.push({
+    kind: 'shot',
+    serviceIndex: svcNum,
+    id: svc.id,
+    name: svc.name,
+    category: svc.category,
+    domain: svc.domain,
+    theme: svc.theme,
+    shot: svc.shot,
+    bigword: svc.name
+  });
+});
+
+// 3. CLOSING
+SLIDES.push({
+  kind: 'closing',
+  theme: { bg: '#FF4A1C', fg: '#140A05', ac: '#140A05', sub: '#E83F12' },
+  eyebrow: 'ITCONNECT — itconnect.dev',
+  lines: ['오늘 본 모든 것,', '여러분도', '<mark>만들 수 있습니다.</mark>'],
+  desc: '이제, 여러분의 업무에서 시작해 보겠습니다.',
+  bigword: 'Your turn'
+});
+
+window.SLIDES = SLIDES;
