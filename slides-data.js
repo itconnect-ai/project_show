@@ -33,6 +33,7 @@ window.SERVICES_RAW = [
       ]
     },
     shot: {
+      mockType: 'startora',
       src: 'assets/shots/startora.png',
       headline: '사내 전 직원이 매일 접속하는 실전 ERP',
       subtext: '회의록 STT 요약, 사규 검색, 연차 신청 및 재무 결재가 하나의 시스템에서 작동합니다.',
@@ -59,6 +60,7 @@ window.SERVICES_RAW = [
       steps: ['병목 업무 발굴', '산출물 자동 생성', '의사결정 시각화']
     },
     shot: {
+      mockType: 'axio',
       src: 'assets/shots/consulting.png',
       headline: '실제 기업 고객 진단에 투입되는 컨설팅 시스템',
       subtext: '기업의 현업 프로세스를 인터뷰하고, AI가 우선순위와 도입 타당성 문서를 실시간 도출합니다.',
@@ -86,6 +88,7 @@ window.SERVICES_RAW = [
       steps: ['공고문 분석', '회사 팩트 정리', '섹션별 초안 작성', 'AI 검토 · 보완', '제출 관리']
     },
     shot: {
+      mockType: 'bizplan',
       src: 'assets/shots/bizplan.png',
       headline: '중기부·창진원 표준 PSST 사업계획서 빌더',
       subtext: '정부과제 공고문 분석부터 3개년 추정 손익계산서까지 체계적으로 검토하고 관리합니다.',
@@ -148,6 +151,7 @@ window.SERVICES_RAW = [
       ]
     },
     shot: {
+      mockType: 'content',
       src: 'assets/shots/content.png',
       headline: '사내 마케팅 콘텐츠 멀티채널 생성 파이프라인',
       subtext: '등록된 Google 계정 워크스페이스를 통해 사내 고유 문체와 키워드를 유지하며 동시 발행합니다.',
@@ -171,6 +175,7 @@ window.SERVICES_RAW = [
     ],
     visual: { type: 'stages', count: 12, label: 'AI Pipeline Studio' },
     shot: {
+      mockType: 'landing',
       src: 'assets/shots/landing.png',
       headline: '12단계 AI 파이프라인 기반 상세페이지 스튜디오',
       subtext: '제품과 타깃을 입력하면 설득 구조에 맞춘 카피라이팅과 섹션 디자인을 자동 완성합니다.',
@@ -194,6 +199,7 @@ window.SERVICES_RAW = [
     ],
     visual: { type: 'chart' },
     shot: {
+      mockType: 'growthlab',
       src: 'assets/shots/keypaper.png',
       headline: '유튜브 알고리즘 데이터 수집 & AI 성장 분석기',
       subtext: '경쟁 채널 및 바이럴 영상의 이상치(Outlier) 패턴을 수집해 기획 단계에서 알고리즘을 공략합니다.',
@@ -221,6 +227,7 @@ window.SERVICES_RAW = [
       brand: 'ITCONNECT'
     },
     shot: {
+      mockType: 'geo',
       src: 'assets/shots/geo.png',
       headline: 'ChatGPT·Perplexity 시대의 검색 최적화 진단',
       subtext: '전통 검색을 넘어 생성형 AI 답변에서 자사 브랜드의 추천 점유율과 인용 출처를 실시간 추적합니다.',
@@ -244,6 +251,7 @@ window.SERVICES_RAW = [
     ],
     visual: { type: 'flow', steps: ['여러 플랫폼', '자동 수집', '한곳에서 관측'] },
     shot: {
+      mockType: 'ads',
       src: 'assets/shots/ads.png',
       headline: '경쟁사 승리 소재와 광고 트렌드 실시간 트래커',
       subtext: '메타·구글 광고 라이브러리 데이터를 수집하여 오래 유지되는 고수익 광고 소재를 분석합니다.',
@@ -267,6 +275,7 @@ window.SERVICES_RAW = [
     ],
     visual: { type: 'flow', steps: ['전체 공고', '조건 선별', '맞춤 알림'] },
     shot: {
+      mockType: 'gov',
       src: 'assets/shots/gov.png',
       headline: '전국 공고를 24시간 감시하는 지능형 지원사업 봇',
       subtext: '중기부·창진원·지자체 공고 중 자사 요건에 부합하는 공고만 3줄 요약하여 사내에 전달합니다.',
@@ -290,6 +299,7 @@ window.SERVICES_RAW = [
     ],
     visual: { type: 'flow', steps: ['소식 · 논문', 'AI 정리', '블로그 발행'] },
     shot: {
+      mockType: 'info',
       src: 'assets/shots/info.png',
       headline: '글로벌 AI 트렌드 수집 및 아티클 자동 생성 허브',
       subtext: 'arXiv 논문과 최신 모델 발표를 분석하여 실무 적용 관점의 기술 블로그 글로 변환합니다.',
